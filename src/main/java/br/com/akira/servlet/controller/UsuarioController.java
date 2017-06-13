@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.akira.bean.model.Usuario;
+import br.com.akira.dao.jdbc.UsuarioDAO;
 
 @WebServlet("/usuController")
 public class UsuarioController extends HttpServlet {
@@ -27,12 +29,15 @@ public class UsuarioController extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 
-		Usuario u = new Usuario();
-		boolean usuarioValido = u.UsuarioValido(login, senha);
+		UsuarioDAO dao = new UsuarioDAO();
+		Usuario usuarioValido = dao.UsuarioValido(login, senha);
 
-		if (usuarioValido == true) {
+		if (usuarioValido != null) {
+			HttpSession sessao = request.getSession();
+			sessao.setAttribute("usuValido", usuarioValido.getNome());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		} else {
+			request.setAttribute("msg", "Login/Senha Invalidos");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 

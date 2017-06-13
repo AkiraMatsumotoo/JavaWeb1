@@ -8,15 +8,6 @@ public class Usuario {
 	private String senha;
 	private int nivel;
 
-	// teste para login
-	public boolean UsuarioValido(String login, String senha) {
-		if (login.equalsIgnoreCase("akira") && senha.equalsIgnoreCase("123")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public int getId() {
 		return id;
 	}

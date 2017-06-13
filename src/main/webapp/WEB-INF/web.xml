@@ -19,4 +19,14 @@
     <servlet-name>UsuarioController</servlet-name>
     <url-pattern>/UsuarioController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Sair</display-name>
+    <servlet-name>Sair</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.Sair</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Sair</servlet-name>
+    <url-pattern>/Sair</url-pattern>
+  </servlet-mapping>
 </web-app>
