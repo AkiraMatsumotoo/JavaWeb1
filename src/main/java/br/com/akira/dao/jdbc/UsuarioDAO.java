@@ -168,7 +168,7 @@ public class UsuarioDAO {
 		return null;
 	}
 
-	public List<Usuario> BuscarTodos() {
+	public List<Usuario> buscarTodos() {
 		String sql = "SELECT * FROM usuario";
 		ArrayList<Usuario> lista = new ArrayList<>();
 		try {

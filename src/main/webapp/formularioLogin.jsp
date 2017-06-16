@@ -9,6 +9,7 @@
 <title>Formulario</title>
 </head>
 <body>
+
 	<form action="usuController" method="post">
 		<table>
 			<tbody>
@@ -32,7 +33,6 @@
 			</tbody>
 		</table>
 	</form>
-
 
 </body>
 </html>

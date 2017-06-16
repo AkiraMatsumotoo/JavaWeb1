@@ -29,4 +29,34 @@
     <servlet-name>Sair</servlet-name>
     <url-pattern>/Sair</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioLista</display-name>
+    <servlet-name>UsuarioLista</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioLista</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioLista</servlet-name>
+    <url-pattern>/UsuarioLista</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioEdita</display-name>
+    <servlet-name>UsuarioEdita</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioEdita</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioEdita</servlet-name>
+    <url-pattern>/UsuarioEdita</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioExclui</display-name>
+    <servlet-name>UsuarioExclui</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioExclui</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioExclui</servlet-name>
+    <url-pattern>/UsuarioExclui</url-pattern>
+  </servlet-mapping>
 </web-app>

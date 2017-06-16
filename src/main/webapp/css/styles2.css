@@ -58,3 +58,22 @@
 	margin: 5px;
 	float: left;
 }
+
+#login{
+	border:1px solid #ddd;
+    border-collapse: collapse;	
+}
+
+table {
+	border:1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+	border:1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}

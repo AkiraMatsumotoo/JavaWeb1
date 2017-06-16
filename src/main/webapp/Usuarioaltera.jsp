@@ -5,17 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Alterar Usuario</title>
 </head>
 <body>
-
-	<ol>
-		<li>Cadastro</li>
-		<li>Cadastro</li>
-		<li>Cadastro</li>
-		<li><a href="UsuarioLista">Lista de Usuarios</a></li>
-		<li><a href="Sair">Sair</a></li>
-	</ol>
-
+	<form accept="UsuarioEdita" method="get">
+		ID : <input type="text" name="id" value="${param.id}"/>
+	</form>
 </body>
 </html>
