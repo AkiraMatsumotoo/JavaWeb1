@@ -83,7 +83,7 @@ public class UsuarioDAO {
 	}
 
 	public void edita(Usuario u) {
-		String sql = "UPDATE usuario SET nome=? login=? senha=? nivel=? WHERE id=?";
+		String sql = "UPDATE usuario SET nome=?, login=?, senha=?, nivel=? WHERE id=?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, u.getNome());
@@ -137,33 +137,29 @@ public class UsuarioDAO {
 		return null;
 	}
 
-	public Usuario buscarPorNome(String nome) {
-		String sql = "SELECT * FROM usuario WHERE nome=?";
+	public List<Usuario> buscarPorNome(Usuario usuario, int limit, int offset) {
+		String sql = "SELECT * FROM usuario WHERE nome like ? limit ? offset ?";
+		ArrayList<Usuario> lista = new ArrayList<>();
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, nome);
+			ps.setString(1, "%" + usuario.getNome() + "%");
+			ps.setInt(2, limit);
+			ps.setInt(3, offset);
+
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				Usuario u = new Usuario();
 				u.setId(rs.getInt("id"));
 				u.setNome(rs.getString("nome"));
 				u.setLogin(rs.getString("login"));
 				u.setSenha(rs.getString("senha"));
 				u.setNivel(rs.getInt("nivel"));
-				return u;
+				lista.add(u);
 			}
+			return lista;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				ps.close();
-				rs.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
 		}
 		return null;
 	}
@@ -186,14 +182,72 @@ public class UsuarioDAO {
 			return lista;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				ps.close();
-				rs.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		}
+		return null;
+	}
+
+	public int qtdUsuarios(String pesquisa) {
+		String sql = "SELECT count(*) AS totalUsuario FROM usuario WHERE nome like ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + pesquisa + "%");
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int totalUsuario = Integer.parseInt(rs.getString("totalUsuario"));
+				return totalUsuario;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public List<Usuario> limitOffset(int limit, int offset) {
+		String sql = "SELECT * FROM usuario limit ? offset ?";
+		ArrayList<Usuario> lista = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, limit);
+			ps.setInt(2, offset);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Usuario u = new Usuario();
+				u.setId(rs.getInt("id"));
+				u.setNome(rs.getString("nome"));
+				u.setLogin(rs.getString("login"));
+				u.setSenha(rs.getString("senha"));
+				u.setNivel(rs.getInt("nivel"));
+				lista.add(u);
+			}
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Usuario> listacompleta(String nome, String ordem, int limit, int offset) {
+		String sql = "SELECT * FROM usuario WHERE nome LIKE ? ORDER BY ? ASC LIMIT ? OFFSET ?";
+		ArrayList<Usuario> lista = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+nome+"%");
+			ps.setString(2, ordem);
+			ps.setInt(3, limit);
+			ps.setInt(4, offset);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Usuario u = new Usuario();
+				u.setId(rs.getInt("id"));
+				u.setNome(rs.getString("nome"));
+				u.setLogin(rs.getString("login"));
+				u.setSenha(rs.getString("senha"));
+				u.setNivel(rs.getInt("nivel"));
+				lista.add(u);
+			}
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

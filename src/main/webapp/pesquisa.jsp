@@ -9,13 +9,10 @@
 </head>
 <body>
 
-	<ol>
-		<li>Cadastro</li>
-		<li>Cadastro</li>
-		<li>Cadastro</li>
-		<li><a href="UsuarioServlet">Lista de Usuarios</a></li>
-		<li><a href="Sair">Sair</a></li>
-	</ol>
+	<c:forEach items="${pesquisa}" var="u">
+		${u.id}
+		${u.nome}
+	</c:forEach>
 
 </body>
 </html>

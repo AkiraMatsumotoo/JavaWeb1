@@ -59,4 +59,54 @@
     <servlet-name>UsuarioExclui</servlet-name>
     <url-pattern>/UsuarioExclui</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioAltera</display-name>
+    <servlet-name>UsuarioAltera</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioAltera</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioAltera</servlet-name>
+    <url-pattern>/UsuarioAltera</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioNovo</display-name>
+    <servlet-name>UsuarioNovo</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioNovo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioNovo</servlet-name>
+    <url-pattern>/UsuarioNovo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioLista2</display-name>
+    <servlet-name>UsuarioLista2</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioLista2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioLista2</servlet-name>
+    <url-pattern>/UsuarioLista2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioServlet</display-name>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <url-pattern>/UsuarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioServlet2</display-name>
+    <servlet-name>UsuarioServlet2</servlet-name>
+    <servlet-class>br.com.akira.servlet.controller.UsuarioServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioServlet2</servlet-name>
+    <url-pattern>/UsuarioServlet2</url-pattern>
+  </servlet-mapping>
 </web-app>

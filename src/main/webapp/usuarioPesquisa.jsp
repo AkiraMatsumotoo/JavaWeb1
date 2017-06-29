@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<tagsAkira:usuValido />
+<%-- <tagsAkira:usuValido /> --%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Tela de login</title>
@@ -18,6 +18,15 @@
 			<table>
 				<tr>
 					<th><a href="usuarioNovo.jsp">Novo Usuario</a></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<form action="UsuarioServlet" method="get">
+							<input type="text" name="nome"/>
+							<input type="submit" name="acao" value="pesquisar"/>
+						</form>
+					</td>
 				</tr>
 			</table>
 
@@ -31,18 +40,27 @@
 					<th width="5">Excluir</th>
 					<th width="5">Editar</th>
 				</tr>
-				<c:forEach items="${sessaolista}" var="usuarios">
+				<c:forEach items="${pesquisa}" var="usuarios">
 					<tr>
 						<td>${usuarios.id}</td>
 						<td>${usuarios.nome}</td>
 						<td>${usuarios.login}</td>
 						<td>${usuarios.senha}</td>
 						<td>${usuarios.nivel}</td>
-						<td><a href="usuarioAltera.jsp?id=${usuarios.id}&nome=${usuarios.nome}&login=${usuarios.login}&senha=${usuarios.senha}&nivel=${usuarios.nivel}">Editar</a></td>
-						<td><a href="UsuarioExclui?id=${usuarios.id}">Excluir</a></td>
+						<td><a
+							href="usuarioAltera.jsp?id=${usuarios.id}&nome=${usuarios.nome}&login=${usuarios.login}&senha=${usuarios.senha}&nivel=${usuarios.nivel}">Editar</a></td>
+						<td><a href="UsuarioServlet?acao=excluir&id=${usuarios.id}">Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</table>
+			<%
+				int totalPaginas = (int) request.getAttribute("totalDePaginas");
+				for (int i = 1; i <= totalPaginas; i++) {
+			%>
+			<a href="UsuarioServlet?numeroPagina=<%=i%>"><%=i%></a>
+			<%
+				}
+			%>
 		</div>
 
 		<div id="rodape"><jsp:include page="rodape.jsp" /></div>

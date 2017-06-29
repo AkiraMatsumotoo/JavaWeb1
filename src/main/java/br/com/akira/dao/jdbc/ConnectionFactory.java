@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/neriweb4db", "root", "123456");
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306/neriweb4db?autoReconnect=true&useSSL=false", "root", "123456");
 		} catch (SQLException | ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		}
